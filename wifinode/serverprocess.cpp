@@ -657,23 +657,21 @@ void resetUSBHost(AsyncWebServerRequest *request)
   request->send(200, "text/plain","ok");
 }
 
-void psuKasa(){
-  int t = 600; //10 minute delay
-  for (unsigned long i = 0; i < t*1000; i++) {
-      delayMicroseconds(1000);
+void psuKasa()
+{
+  writeLog("Init Kasa Plugin");
+  int kasaX = 0;
+
+  for(kasaX;kasaX<60;kasaX++) {
+    delay(5000);
   }
 
-  writeLog("Init Kasa Plugin");
-  int foundKasa;
-  foundKasa = kasaUtil.ScanDevices();
-  //for (int i = 0; i < found; i++)
-  // {
-  //   KASASmartPlug *p = kasaUtil.GetSmartPlugByIndex(i);
-  //   kasa_cmd = "\r\n %d. %s IP: %s Relay: %d"+i+String(p->alias)+String(p->ip_address)+String(p->state);
-  //   writeLog(kasa_cmd);
-  // }
-  KASASmartPlug *printerPlug = kasaUtil.GetSmartPlug("MK3SNode");
-  printerPlug->SetRelayState(0);
+  if (kasaX == 60) {
+    int foundKasa;
+    foundKasa = kasaUtil.ScanDevices();
+    KASASmartPlug *printerPlug = kasaUtil.GetSmartPlug("MK3SNode");
+    printerPlug->SetRelayState(0);
+  }
 }
 
 void cancleOrFinishPrint()
