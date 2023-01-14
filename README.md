@@ -9,6 +9,10 @@
 
 </p>
 
+## 0. Fork
+
+Added PSU Control for Kasa HS110 via KasaSmartPlug library: https://github.com/kj831ca/KasaSmartPlug
+
 ## 1. Project catalog description
 
 - Dependencies: Espressif System 1.0.6
